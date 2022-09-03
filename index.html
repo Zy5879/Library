@@ -5,32 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <title>Library</title>
 </head>
 <body>
-    <!-- <div class="header">
-        <div> -->
     <h2>Library Storage</h2>
-         <button class="add">+ ADD BOOK</button>
-            <div class="modal active" id="modal">
-                <div class="modal-header">
-                    <div class="title">New Book</div>
-                    <button class="close-button">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <label for="book_name">Book</label>
-                    <input type="text" id="inputBookName">
-                    <label for="author_name">Author</label>
-                    <input type="text" id="inputAuthor">
-                    <label for="read">Read</label>
-                    <input type="checkbox" id="inputReadStatus">
-                    <button id="btn" onclick="createPerson()">Submit</button>
-                </div>
-            </div>
-            <div class="active" id="overlay" ></div>
-        <!-- </div>
+    <button data-modal-target="#modal">+ ADD BOOK</button>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">New Book</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <label for="book_name">Book</label>
+            <input type="text" id="inputBookName">
+            <label for="author_name">Author</label>
+            <input type="text" id="inputAuthor">
+            <label for="read">Read</label>
+            <input type="checkbox" id="inputReadStatus">
+            <button id="btn" onclick="createPerson()">Submit</button>
+        </div>
     </div>
-    <div class="main"></div> -->
+    <div id="overlay"></div>
 </body>
 </html>
