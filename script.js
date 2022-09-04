@@ -34,3 +34,19 @@ function closeModal(modal) {
     modal.classList.remove('active')
     overlay.classList.remove('active')
 }
+
+function createPerson() {
+    let book = document.getElementById('inputValueBook').value;
+    let author = document.getElementById('inputValueAuthor').value;
+    let status = document.getElementById('inputValueStatus').value;
+
+function Person(book, author, status) {
+    this.book = book;
+    this.author = author;
+    this.status = status;
+}
+
+let newPeople = new Person(book, author, status);
+console.log(newPeople);
+
+}
