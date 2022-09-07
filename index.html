@@ -17,15 +17,16 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">
-            <label for="book_name">Book</label>
-            <input type="text" id="inputValueBook">
-            <label for="author_name">Author</label>
-            <input type="text" id="inputValueAuthor">
-            <label for="read">Read</label>
+            <input type="text" id="inputValueBook" placeholder="Book Name">
+            <input type="text" id="inputValueAuthor" placeholder="Author Name">
+            <div class="check">
+            <label for="read">READ:</label>
             <input type="checkbox" id="inputValueStatus">
-            <button id="btn" onclick="createPerson()">Submit</button>
+            </div>
+            <button id="btn" onclick="createBook()">Submit</button>
         </div>
     </div>
+    <div class="main"></div>
     <div id="overlay"></div>
 </body>
 </html>

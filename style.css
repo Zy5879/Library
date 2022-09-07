@@ -9,6 +9,7 @@
     z-index: 10;
     background-color: white;
     width: 500px;
+    height: 250px;
     max-width: 80%;
 }
 
@@ -41,11 +42,42 @@
     padding: 10px 15px;
 }
 
+input, label{
+    display: block;
+    margin: 12px 0;
+
+}
+
+input[type=text] {
+    border: 1px solid #ccc ;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+#btn {
+   margin-top: 1rem;
+   padding: 10px 15px;
+   cursor: pointer;
+   border-radius: 4px;
+   border: none;
+   font-size: 1rem;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+}
+
+#inputValueStatus {
+    margin-left: .4rem;
+}
+
 #overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
-    top: 0;
+    top: 0; 
     left: 0;
     right: 0;
     bottom: 0;
