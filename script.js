@@ -1,3 +1,5 @@
+let library = [];
+
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
@@ -27,6 +29,7 @@ function openModal(modal) {
     if (modal == null) return
     modal.classList.add('active')
     overlay.classList.add('active')
+
 }
 
 function closeModal(modal) {
@@ -35,18 +38,42 @@ function closeModal(modal) {
     overlay.classList.remove('active')
 }
 
-function createPerson() {
-    let book = document.getElementById('inputValueBook').value;
-    let author = document.getElementById('inputValueAuthor').value;
-    let status = document.getElementById('inputValueStatus').value;
-
-function Person(book, author, status) {
+function Book(book,author,page) {
     this.book = book;
     this.author = author;
-    this.status = status;
+    this.page = page;
 }
 
-let newPeople = new Person(book, author, status);
-console.log(newPeople);
+function addBookToLibrary(book,author,page) {
+    let news = new Book(book, author, page)
+    library.push(news)
+    // displayBooks()
+}
+
+function displayBooks() {
+    const main = document.querySelector('.main');
+    
+    const title = document.getElementById('inputValueBook').value;
+    const writer = document.getElementById('inputValueAuthor').value;
+    const pg = document.getElementById('inputPages').value;
+    // library.forEach(element => console.log(element))
+    const card = document.createElement('div');
+    card.classList.add('card');
+    main.appendChild(card)
+    const para = document.createElement('p');
+    const para1 = document.createElement('p')
+    const para2 = document.createElement('p')
+    // para.textContent = (`${title} ${writer} ${pg}`);
+    para.textContent = (`${title}`);
+    para1.textContent = (`${writer}`);
+    para2.textContent = (`${pg}`)
+    card.append(para, para1, para2)
+    addBookToLibrary(title, writer, pg)
 
 }
+
+// addBookToLibrary('Harry Potter', 'JK ROWLING', '256');
+// addBookToLibrary('Harry Potter', 'JK ROWLING', '256');
+
+
+const btn = document.getElementById('btn').addEventListener('click', displayBooks)
