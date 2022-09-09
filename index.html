@@ -10,7 +10,7 @@
 </head>
 <body>
     <h2>Library Storage</h2>
-    <button data-modal-target="#modal">+ ADD BOOK</button>
+    <button data-modal-target="#modal" id="add-book">+ ADD BOOK</button>
     <div class="modal" id="modal">
         <div class="modal-header">
             <div class="title">New Book</div>
@@ -20,10 +20,10 @@
             <input type="text" id="inputValueBook" placeholder="Book Name">
             <input type="text" id="inputValueAuthor" placeholder="Author Name">
             <div class="check">
-            <label for="read">READ:</label>
-            <input type="checkbox" id="inputValueStatus">
+            <label for="read">Pages:</label>
+            <input type="text" id="inputPages">
             </div>
-            <button id="btn" onclick="createBook()">Submit</button>
+            <button id="btn">Submit</button>
         </div>
     </div>
     <div class="main"></div>
