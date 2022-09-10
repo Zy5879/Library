@@ -57,9 +57,28 @@ function displayBooks() {
     const writer = document.getElementById('inputValueAuthor').value;
     const pg = document.getElementById('inputPages').value;
     // library.forEach(element => console.log(element))
+    
+    let index = 0; 
     const card = document.createElement('div');
     card.classList.add('card');
     main.appendChild(card)
+
+    const removeBookButton = document.createElement('span')
+    removeBookButton.classList.add('remove-book-button');
+    removeBookButton.textContent = 'x'
+
+    removeBookButton.dataset.linkedArray = index;
+    index++;
+    card.appendChild(removeBookButton)
+
+    removeBookButton.addEventListener('click', removeBookFromLibrary);
+    
+    function removeBookFromLibrary() {
+        let retriveBookToRemove = removeBookButton.dataset.linkedArray;
+        library.splice(parseInt(retriveBookToRemove), 1);
+        card.remove()
+    }
+
     const para = document.createElement('p');
     const para1 = document.createElement('p')
     const para2 = document.createElement('p')
