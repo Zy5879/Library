@@ -68,7 +68,7 @@ function displayBooks() {
     const para1 = document.createElement('p');
     const para2 = document.createElement('p');
 
-    const btn2  = document.createElement('span');
+    const btn2  = document.createElement('button');
     console.log(btn2)
     btn2.addEventListener('click', change)
     function change() {
@@ -81,26 +81,38 @@ function displayBooks() {
         }
     }
 
-    let index = 0; 
+    // let index = 0; 
     const card = document.createElement('div');
     card.classList.add('card');
     main.appendChild(card)
 
-    const removeBookButton = document.createElement('span')
+    const removeBookButton = document.createElement('button')
     removeBookButton.classList.add('remove-book-button');
-    removeBookButton.textContent = 'x'
+    removeBookButton.textContent = 'x';
 
-    removeBookButton.dataset.linkedArray = index;
-    index++;
+    // removeBookButton.dataset.linkedArray = index;
+    // index++;
     card.appendChild(removeBookButton)
 
-    removeBookButton.addEventListener('click', removeBookFromLibrary);
+    removeBookButton.addEventListener('click', function(e) {
+        this.parentNode.remove()
+        let target = e.target;
+        let itemIndex = 0;
+        for(const item of items) {
+            if(item.index === target.parentNode.index) {
+                items.splice(item.index, 1);
+                items.Children[item.index]. remove();
+                break;
+            }
+            itemIndex++;
+        }
+    });
     
-    function removeBookFromLibrary() {
-        let retriveBookToRemove = removeBookButton.dataset.linkedArray;
-        library.splice(parseInt(retriveBookToRemove), 1);
-        card.remove()
-    }
+    // function removeBookFromLibrary() {
+    //     let retriveBookToRemove = removeBookButton.dataset.linkedArray;
+    //     library.splice(retriveBookToRemove, 1);
+    //     card.remove()
+    // }
 
 
     // para.textContent = (`${title} ${writer} ${pg}`);
