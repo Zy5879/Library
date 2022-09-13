@@ -38,14 +38,15 @@ function closeModal(modal) {
     overlay.classList.remove('active')
 }
 
-function Book(book,author,page) {
+function Book(book,author,page, isRead) {
     this.book = book;
     this.author = author;
     this.page = page;
+    this.isRead = isRead
 }
 
-function addBookToLibrary(book,author,page) {
-    let news = new Book(book, author, page)
+function addBookToLibrary(book,author,page, isRead) {
+    let news = new Book(book, author, page, isRead)
     library.push(news)
     // displayBooks()
 }
@@ -56,8 +57,30 @@ function displayBooks() {
     const title = document.getElementById('inputValueBook').value;
     const writer = document.getElementById('inputValueAuthor').value;
     const pg = document.getElementById('inputPages').value;
-    // library.forEach(element => console.log(element))
     
+    
+    const readBtn = document.getElementById('readStatus').value;
+
+
+    // const readBtn = document.getElementById('read-btn').value;
+
+    const para = document.createElement('p');
+    const para1 = document.createElement('p');
+    const para2 = document.createElement('p');
+
+    const btn2  = document.createElement('span');
+    console.log(btn2)
+    btn2.addEventListener('click', change)
+    function change() {
+        if(btn2.value === 'Read') {
+            btn2.value = 'Did Not Read';
+            btn2.innerHTML = 'Did Not Read';
+        } else {
+            btn2.value = 'Read';
+            btn2.innerHTML = 'Read';
+        }
+    }
+
     let index = 0; 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -79,20 +102,49 @@ function displayBooks() {
         card.remove()
     }
 
-    const para = document.createElement('p');
-    const para1 = document.createElement('p')
-    const para2 = document.createElement('p')
+
     // para.textContent = (`${title} ${writer} ${pg}`);
     para.textContent = (`${title}`);
     para1.textContent = (`${writer}`);
-    para2.textContent = (`${pg}`)
-    card.append(para, para1, para2)
-    addBookToLibrary(title, writer, pg)
+    para2.textContent = (`${pg}`);
+    btn2.textContent = (`${readBtn}`)
+    card.append(para, para1, para2, btn2);
+    addBookToLibrary(title, writer, pg, btn2);
+    closeModal(modal)
 
 }
 
+
+
 // addBookToLibrary('Harry Potter', 'JK ROWLING', '256');
 // addBookToLibrary('Harry Potter', 'JK ROWLING', '256');
 
 
-const btn = document.getElementById('btn').addEventListener('click', displayBooks)
+const btn = document.getElementById('btn').addEventListener('click', displayBooks);
+
+
+
+
+
+    // library.forEach(element => console.log(element))
+    
+    // let index = 0; 
+    // const card = document.createElement('div');
+    // card.classList.add('card');
+    // main.appendChild(card)
+
+    // const removeBookButton = document.createElement('span')
+    // removeBookButton.classList.add('remove-book-button');
+    // removeBookButton.textContent = 'x'
+
+    // removeBookButton.dataset.linkedArray = index;
+    // index++;
+    // card.appendChild(removeBookButton)
+
+    // removeBookButton.addEventListener('click', removeBookFromLibrary);
+    
+    // function removeBookFromLibrary() {
+    //     let retriveBookToRemove = removeBookButton.dataset.linkedArray;
+    //     library.splice(parseInt(retriveBookToRemove), 1);
+    //     card.remove()
+    // }
