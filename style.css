@@ -9,7 +9,7 @@
     z-index: 10;
     background-color: white;
     width: 500px;
-    height: 270px;
+    height: 300px;
     max-width: 80%;
 }
 
@@ -69,6 +69,15 @@ input[type=text] {
     align-items: center;
 }
 
+.check-2 {
+    display: flex;
+    align-items: center;
+}
+
+#readStatus{
+    margin-left: .4rem
+}
+
 #inputPages {
     margin-left: .4rem;
     width: 15%;
@@ -90,4 +99,15 @@ input[type=text] {
 #overlay.active {
     pointer-events: all;
     opacity: 1;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+    grid-auto-rows: 200px;
+    gap: 2rem;
+}
+
+.card {
+    border: 2px solid black;
 }
