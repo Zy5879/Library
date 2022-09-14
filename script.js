@@ -79,9 +79,11 @@ function displayBooks() {
     if(readBtn.checked === true) {
         btn2.innerHTML = 'Read';
         btn2.value = 'Read'
+        btn2.style.backgroundColor = '#39FF14'
     } else {
         btn2.innerHTML = 'Did Not Read';
         btn2.value = 'Did Not Read';
+        btn2.style.backgroundColor = '#FF3131'
     }
 
     // After submit allows toggle 
@@ -91,9 +93,11 @@ function displayBooks() {
         if(btn2.value === 'Read') {
             btn2.value = 'Did Not Read';
             btn2.innerHTML = 'Did Not Read';
+            btn2.style.backgroundColor = '#FF3131'
         } else {
             btn2.value = 'Read';
             btn2.innerHTML = 'Read';
+            btn2.style.backgroundColor = '#39FF14'
         }
     }
 
@@ -132,9 +136,18 @@ function displayBooks() {
     card.append(para, para1, para2, btn2);
     addBookToLibrary(title, writer, pg, readBtn.checked);
     closeModal(modal)
-
+    myForm.reset()
 }
 
 
 
+
 const btn = document.getElementById('btn').addEventListener('click', displayBooks);
+
+//Prevents form from reloading once submit is clicked
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+        e.preventDefault()
+    })
+})
