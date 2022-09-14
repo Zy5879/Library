@@ -1,5 +1,7 @@
 let library = [];
 
+// MODAL
+
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
@@ -38,6 +40,10 @@ function closeModal(modal) {
     overlay.classList.remove('active')
 }
 
+
+
+// Object Constructor
+
 function Book(book,author,page,read) {
     this.book = book;
     this.author = author;
@@ -45,11 +51,14 @@ function Book(book,author,page,read) {
     this.read = read;
 }
 
+// pushes info from Book Constructor to library array
+
 function addBookToLibrary(book,author,page,read) {
     let news = new Book(book, author, page,read)
     library.push(news)
-    // displayBooks()
 }
+
+// Display info that's pushed into array on page
 
 function displayBooks() {
     const main = document.querySelector('.main');
@@ -57,12 +66,13 @@ function displayBooks() {
     const title = document.getElementById('inputValueBook').value;
     const writer = document.getElementById('inputValueAuthor').value;
     const pg = document.getElementById('inputPages').value;
-    
     const readBtn = document.getElementById('read')
 
     const para = document.createElement('p');
     const para1 = document.createElement('p');
     const para2 = document.createElement('p');
+
+    // if checkbox is checked it returns Read in HTML BUTTON once submit is clicked
 
     const btn2  = document.createElement('button');
     btn2.classList.add('btn2');
@@ -73,6 +83,8 @@ function displayBooks() {
         btn2.innerHTML = 'Did Not Read';
         btn2.value = 'Did Not Read';
     }
+
+    // After submit allows toggle 
 
     btn2.addEventListener('click', change)
     function change() {
@@ -85,6 +97,7 @@ function displayBooks() {
         }
     }
 
+
     const card = document.createElement('div');
     card.classList.add('card');
     main.appendChild(card)
@@ -94,6 +107,8 @@ function displayBooks() {
     removeBookButton.textContent = 'x';
 
     card.appendChild(removeBookButton)
+
+    // Allows to delete a specific card in your library
 
     removeBookButton.addEventListener('click', function(e) {
         this.parentNode.remove();
@@ -109,6 +124,7 @@ function displayBooks() {
     });
     
 
+    //value of your input gets pushed onto the page and into the array.
 
     para.textContent = (`${title}`);
     para1.textContent = (`${writer}`);
@@ -122,29 +138,3 @@ function displayBooks() {
 
 
 const btn = document.getElementById('btn').addEventListener('click', displayBooks);
-
-
-
-
-    // library.forEach(element => console.log(element))
-    
-    // let index = 0; 
-    // const card = document.createElement('div');
-    // card.classList.add('card');
-    // main.appendChild(card)
-
-    // const removeBookButton = document.createElement('span')
-    // removeBookButton.classList.add('remove-book-button');
-    // removeBookButton.textContent = 'x'
-
-    // removeBookButton.dataset.linkedArray = index;
-    // index++;
-    // card.appendChild(removeBookButton)
-
-    // removeBookButton.addEventListener('click', removeBookFromLibrary);
-    
-    // function removeBookFromLibrary() {
-    //     let retriveBookToRemove = removeBookButton.dataset.linkedArray;
-    //     library.splice(parseInt(retriveBookToRemove), 1);
-    //     card.remove()
-    // }
