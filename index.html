@@ -19,6 +19,7 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">
+            <form id="myForm">
             <input type="text" id="inputValueBook" placeholder="Book Name">
             <input type="text" id="inputValueAuthor" placeholder="Author Name">
             <div class="check">
@@ -29,7 +30,8 @@
               <label for="read">Read:</label>
               <input type="checkbox" id="read" value="Did You Read?">
             </div>
-            <button id="btn">Submit</button>
+            <button type="submit" form="form" id="btn">Submit</button>
+            </form>
         </div>
     </div>
     <div class="main">    
