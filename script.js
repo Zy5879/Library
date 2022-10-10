@@ -40,9 +40,6 @@ function closeModal(modal) {
     overlay.classList.remove('active')
 }
 
-// const main = document.querySelector('.main')
-// const newBook = new Book(main)
-
 class Book {
     constructor(title,author,page,read) {
         this.title = title;
@@ -78,29 +75,75 @@ class Storage {
         const main = document.querySelector('.main');
         const card = document.createElement('div');
         card.classList.add('card')
-        // const btn2 = document.createElement('button')
-        // btn2.classList.add('btn2')
 
-        card.innerHTML = `
-            <p>${book.title}</p>
-            <p>${book.author}</p>
-            <p>${book.page}</p>
-            <button>${book.read}</button>
-        `;
+        const removeBookButton = document.createElement('button')
+        removeBookButton.classList.add('remove-book-button');
+        removeBookButton.textContent = 'x';
 
-        // card.append(btn2)
+        removeBookButton.addEventListener('click', function(e) {
+            console.log('You Removed A Card')
+            this.parentNode.remove();
+            let target = e.target;
+            let itemIndex = 0;
+            for(const item of library) {
+                if(item.index === target.parentNode.index) {
+                    library.splice(item.index, 1);
+                    break;
+                }
+                itemIndex++;
+            }
+        });
+
+        card.appendChild(removeBookButton)
+
+
+        const para = document.createElement('p');
+        para.innerHTML = `${book.title}`
+
+        const para1 = document.createElement('p');
+        para1.innerHTML = `${book.author}`
+
+        const para2 = document.createElement('p');
+        para2.innerHTML = `${book.page}`
+
+        const btn2 = document.createElement('button')
+        btn2.classList.add('btn2')
+        btn2.innerHTML = `${book.read}`
+
+        if(btn2.innerHTML === 'Read') {
+            btn2.style.backgroundColor = '#39FF14'
+        } else {
+            btn2.innerHTML === 'Did Not Read'
+            btn2.style.backgroundColor = '#FF3131'
+        }
+
+        btn2.addEventListener('click', (e) => {
+            console.log('Toggling')
+            if(btn2.innerHTML === 'Read') {
+                btn2.innerHTML = 'Did Not Read';
+                btn2.style.backgroundColor = '#FF3131'
+            } else {
+                btn2.innerHTML = 'Read';
+                btn2.innerHTML = 'Read';
+                btn2.style.backgroundColor = '#39FF14'
+            }
+        })
+    
+
+        card.append(para,para1,para2,btn2)
 
 
         main.appendChild(card)
 
     }
 
+
 }
 
 document.addEventListener('DOMContentLoaded', Storage.displayBooks)
 
 document.getElementById('btn').addEventListener('click', (e) => {
-    console.log(e);
+    console.log('You Are Adding A Card');
     e.preventDefault();
 
     const title = document.getElementById('inputValueBook').value;
@@ -117,6 +160,10 @@ document.getElementById('btn').addEventListener('click', (e) => {
     }
 
     Storage.addBookToLibrary(book)
+    library.push(book)
+    closeModal(modal)
+    myForm.reset()
+
 })
 
 
